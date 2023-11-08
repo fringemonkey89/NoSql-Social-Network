@@ -1,21 +1,33 @@
 const {User, Thought} = require('../models');
 
-// get all thoughts
 
+const thoughtController = {
+// get all thoughts
+async getAllThoughts(){
+
+},
 
 //get thought by id
-
+async getThoughtById(){
+    
+},
 
 //create thoughts
-
+async createThought(){
+    
+},
 
 //update thoughts
-
+async updateThought(){
+    
+},
 
 // delete thought
+async deleteThought(){
+    
+}
 
-
-
+}
 
 
 

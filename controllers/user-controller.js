@@ -1,5 +1,6 @@
 const {User, Thought} = require('../models');
 
+const userController = {
 //get all users
 
 
@@ -20,6 +21,9 @@ const {User, Thought} = require('../models');
 
 
 // delete friend
+
+
+}
 
 
 module.exports = userController;
