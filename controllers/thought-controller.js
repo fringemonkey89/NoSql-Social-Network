@@ -7,8 +7,9 @@ async getAllThoughts(req, res){
     try{
 
     }
-    catch{
-
+    catch (err){
+        console.log(err);
+        res.status(400).json(err)
     }
 },
 
@@ -17,9 +18,10 @@ async getThoughtById(req, res){
     try{
 
     }
-    catch{
-
-    }  
+    catch (err){
+        console.log(err);
+        res.status(400).json(err)
+    }
 },
 
 //create thoughts
@@ -27,8 +29,9 @@ async createThought(req, res){
     try{
 
     }
-    catch{
-
+    catch (err){
+        console.log(err);
+        res.status(400).json(err)
     }
 },
 
@@ -37,8 +40,9 @@ async updateThought(req, res){
     try{
 
     }
-    catch{
-
+    catch (err){
+        console.log(err);
+        res.status(400).json(err)
     }
 },
 
@@ -47,8 +51,9 @@ async deleteThought(req, res){
     try{
 
     }
-    catch{
-
+    catch (err){
+        console.log(err);
+        res.status(400).json(err)
     }
 }
 
