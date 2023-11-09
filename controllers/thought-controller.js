@@ -5,7 +5,8 @@ const thoughtController = {
 // get all thoughts
 async getAllThoughts(req, res){
     try{
-
+        let thoughts = await Thought.find({})
+        res.json(thoughts)
     }
     catch (err){
         console.log(err);
@@ -16,7 +17,11 @@ async getAllThoughts(req, res){
 //get thought by id
 async getThoughtById(req, res){
     try{
+        let thought = await Thought.findOne({})
+        if() {
 
+        }
+        res.json(thoughts)
     }
     catch (err){
         console.log(err);
@@ -27,7 +32,11 @@ async getThoughtById(req, res){
 //create thoughts
 async createThought(req, res){
     try{
+        let thought = await Thought.create(body)
+        if() {
 
+        }
+        res.json(thought)
     }
     catch (err){
         console.log(err);
@@ -38,7 +47,11 @@ async createThought(req, res){
 //update thoughts
 async updateThought(req, res){
     try{
+        let thought = await Thought.findOneAndUpdate({})
+        if() {
 
+        }
+        res.json(thought)
     }
     catch (err){
         console.log(err);
@@ -49,7 +62,11 @@ async updateThought(req, res){
 // delete thought
 async deleteThought(req, res){
     try{
+        let thought = await Thought.findOneAndDelete({})
+        if() {
 
+        }
+        res.json(thought)
     }
     catch (err){
         console.log(err);
