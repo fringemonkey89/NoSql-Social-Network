@@ -3,28 +3,53 @@ const {User, Thought} = require('../models');
 
 const thoughtController = {
 // get all thoughts
-async getAllThoughts(){
+async getAllThoughts(req, res){
+    try{
 
+    }
+    catch{
+
+    }
 },
 
 //get thought by id
-async getThoughtById(){
-    
+async getThoughtById(req, res){
+    try{
+
+    }
+    catch{
+
+    }  
 },
 
 //create thoughts
-async createThought(){
-    
+async createThought(req, res){
+    try{
+
+    }
+    catch{
+
+    }
 },
 
 //update thoughts
-async updateThought(){
-    
+async updateThought(req, res){
+    try{
+
+    }
+    catch{
+
+    }
 },
 
 // delete thought
-async deleteThought(){
-    
+async deleteThought(req, res){
+    try{
+
+    }
+    catch{
+
+    }
 }
 
 }
