@@ -5,7 +5,7 @@ const thoughtController = {
 // get all thoughts
 async getAllThoughts(req, res){
     try{
-        let thoughts = await Thought.find({})
+        let thoughts = await Thought.find({}).populate({path: 'reaction', select: '-__v'}).select('-__v').sort({_id: -1})
         res.json(thoughts)
     }
     catch (err){
@@ -15,13 +15,14 @@ async getAllThoughts(req, res){
 },
 
 //get thought by id
-async getThoughtById(req, res){
+async getThoughtById({params}, res){
     try{
-        let thought = await Thought.findOne({})
-        if() {
-
+        let thought = await Thought.findOne({_id: params.thoughtId}).populate({path: 'reaction', select: '-__v'}).select('-__v')
+        if(!thought) {
+            res.status(404).json({message: ' theres no thought with this id'});
+            return;
         }
-        res.json(thoughts)
+        res.json(thought)
     }
     catch (err){
         console.log(err);
@@ -30,11 +31,13 @@ async getThoughtById(req, res){
 },
 
 //create thoughts
-async createThought(req, res){
+async createThought({params, body}, res){
     try{
         let thought = await Thought.create(body)
-        if() {
-
+        let update = await User.findOneAndUpdate({_id: params.userId}, {$push: {thoughts: thought._id}}, {new: true})
+        if(!update) {
+            res.status(404).json({ message: 'no user with this id'})
+            return;
         }
         res.json(thought)
     }
