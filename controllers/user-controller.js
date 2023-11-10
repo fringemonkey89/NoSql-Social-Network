@@ -4,7 +4,8 @@ const userController = {
 //get all users
     async getAllUsers(req, res){
         try{
-            let users = await User.find({})
+            let users = await User.find({}).populate({path: 'thoughts', select: '-__v'}).select('-__v').sort({_id: -1});
+            res.json(users)
         }
         catch (err){
             console.log(err);
@@ -13,9 +14,14 @@ const userController = {
     },
 
 //get user by id
-async getUserById(req, res){
+async getUserById({params}, res){
     try{
-        let user = await User.findOne({})
+        let user = await User.findOne({_id: params.id}).populate({path: 'thoughts', select: '-__v'}).select('-__v')
+        if(!user) {
+            res.status(404).jon({message: 'no user with this id'})
+            return;
+        }
+        res.json(user)
     }
     catch (err){
         console.log(err);
