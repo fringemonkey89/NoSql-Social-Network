@@ -48,11 +48,11 @@ async createThought({params, body}, res){
 },
 
 //update thoughts
-async updateThought(req, res){
+async updateThought({params}, res){
     try{
         let thought = await Thought.findOneAndUpdate({})
-        if() {
-
+        if(!thought) {
+            res.staus(404).json({ message: 'no thought wih this id'})
         }
         res.json(thought)
     }
@@ -63,10 +63,10 @@ async updateThought(req, res){
 },
 
 // delete thought
-async deleteThought(req, res){
+async deleteThought({params}, res){
     try{
         let thought = await Thought.findOneAndDelete({})
-        if() {
+        if(!thought) {
 
         }
         res.json(thought)

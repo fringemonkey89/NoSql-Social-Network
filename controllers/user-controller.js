@@ -31,7 +31,7 @@ async getUserById({params}, res){
 },
 
 //create user
-async createUser(req, res){
+async createUser({body}, res){
     try{
         let user = await User.create(body)
         res.json(user)
@@ -44,10 +44,10 @@ async createUser(req, res){
 },
 
 //update user
-async updateUser(req, res){
+async updateUser({params, body}, res){
     try{
-        let users = await User.findOneAndUpdate({})
-        if() {
+        let user = await User.findOneAndUpdate({})
+        if(!user) {
 
         }
         res.json(user)
@@ -61,7 +61,7 @@ async updateUser(req, res){
 
 
 //delete user
-async deleteUser(req, res){
+async deleteUser({params}, res){
     try{
 
     }
@@ -73,10 +73,10 @@ async deleteUser(req, res){
 },
 
 //add friend
-async addFriend(req, res){
+async addFriend({params}, res){
     try{
-        let users = await User.findOneAndDelete({})
-        if (){
+        let friend = await User.findOneAndDelete({})
+        if (!friend){
 
         }
         res.json(user)
@@ -89,7 +89,7 @@ async addFriend(req, res){
 },
 
 // delete friend
-async deleteFriend(req, res){
+async deleteFriend({params}, res){
     try{
 
     }
