@@ -11,7 +11,7 @@ app.use(require('./routes'))
 
 mongoose.connect('mongodb://127.0.0.1:27017/social-network',
 {
-    userNewUrlParser: true,
+    useNewUrlParser: true,
     useUnifiedTopology: true
 });
 

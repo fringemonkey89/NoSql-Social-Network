@@ -43,12 +43,13 @@ async createUser({body}, res){
 
 },
 
-//update user
+//elete user
 async updateUser({params, body}, res){
     try{
-        let user = await User.findOneAndUpdate({})
+        let user = await User.findOneAndUpdate({_id: params.id}, body, {new: true, runValidators: true })
         if(!user) {
-
+            res.status(404).json({ message: 'no user found with this Id'})
+            return;
         }
         res.json(user)
     }
@@ -63,7 +64,17 @@ async updateUser({params, body}, res){
 //delete user
 async deleteUser({params}, res){
     try{
-
+        let user = await User.findOneAndelete({_id: params.id})
+        if(!user) {
+            res.status(404).json({ message: 'no user with this id!'})
+            return;
+        }
+         let thought = await Thought.deleteMany({userId: params.Id})
+         if (!thought) {
+            res.json(user, {message: 'no thoughts connected with this user found'})
+            return;
+         }
+        res.json(user)
     }
     catch (err){
         console.log(err);
@@ -75,11 +86,12 @@ async deleteUser({params}, res){
 //add friend
 async addFriend({params}, res){
     try{
-        let friend = await User.findOneAndDelete({})
+        let friend = await User.findOneAndUpdate({_id: params.id}, {$addToSet: {friends: params.friendId}}, {new: true })
         if (!friend){
-
+            res.status(404).json({ message: 'no user with this Id'});
+            return;
         }
-        res.json(user)
+        res.json(friend)
     }
     catch (err){
         console.log(err);
