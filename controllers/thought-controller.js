@@ -81,7 +81,32 @@ async deleteThought({params}, res){
         console.log(err);
         res.status(400).json(err)
     }
+},
+
+async addReaction({ params, body}, res) {
+    try{
+        let reaction = await Thought.findOneAndUpdate({ _id: params.thoughtId}, {$push: {reactions: body }}, {new: true, runValidators: true})
+        if (!reaction) {
+            res.status(404).json({ message: 'No thought with this id!'})
+        }
+    }
+    catch (err) {
+
+    }
+
+},
+async removeReaction({ params, body}, res) {
+    try{
+        let reaction = await Thought.findByOneAndUpdate({ _id: params.thoughtId}, {$pull: {reactions: {reactionId: params.reactionId }}}, {new: true})
+        res.json(reaction)
+    }
+    catch (err) {
+        console.log(err);
+        res.json(err)
+    }
+
 }
+
 
 }
 
