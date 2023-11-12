@@ -50,7 +50,7 @@ async createThought({params, body}, res){
 //update thoughts
 async updateThought({params}, res){
     try{
-        let thought = await Thought.findOneAndUpdate({})
+        let thought = await Thought.findOneAndUpdate({_id: params.thoughtId}, body, {new: true, runValidators:true })
         if(!thought) {
             res.staus(404).json({ message: 'no thought wih this id'})
         }
@@ -65,11 +65,17 @@ async updateThought({params}, res){
 // delete thought
 async deleteThought({params}, res){
     try{
-        let thought = await Thought.findOneAndDelete({})
+        let thought = await Thought.findOneAndDelete({_id: params.thoughtId})
         if(!thought) {
-
+            res.status(404).json({ message: 'no thought with this id'})
+            return;
         }
-        res.json(thought)
+
+        let updated = await User.findOneAndUpdate({_id: thought.userId}, {$pull: {thoughts: params.thoughtId}}, {new: true})
+        if (!updated) {
+            res.status(404).json({ message: 'no user with this id!'})
+        }
+        res.json(updated)
     }
     catch (err){
         console.log(err);
