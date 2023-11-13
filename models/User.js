@@ -13,7 +13,7 @@ const UserSchema = new Schema(
             unique: true,
             required: true,
             match: [
-                /^([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/, 'enter a valid email address'
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'enter a valid email address'
             ]
         },
         thoughts: [

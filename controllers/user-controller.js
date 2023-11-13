@@ -64,7 +64,7 @@ async updateUser({params, body}, res){
 //delete user
 async deleteUser({params}, res){
     try{
-        let user = await User.findOneAndelete({_id: params.id})
+        let user = await User.findOneAndDelete({_id: params.id})
         if(!user) {
             res.status(404).json({ message: 'no user with this id!'})
             return;
