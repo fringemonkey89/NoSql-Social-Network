@@ -4,11 +4,10 @@ const formatDate = require('../util/date')
 const ReactionSchema = new Schema(
     {
         reactionId: {
-            type: String,
-            required: true,
-            max: 280
+            type: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId()
         },
-        reactionBOdy:{
+        reactionBody:{
             type: String,
             required: true,
             max: 280

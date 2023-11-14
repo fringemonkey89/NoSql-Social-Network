@@ -5,7 +5,7 @@ const thoughtController = {
 // get all thoughts
 async getAllThoughts(req, res){
     try{
-        let thoughts = await Thought.find({}).populate({path: 'reaction', select: '-__v'}).select('-__v').sort({_id: -1})
+        let thoughts = await Thought.find({}).populate({path: 'reactions', select: '-__v'}).select('-__v').sort({_id: -1})
         res.json(thoughts)
     }
     catch (err){
@@ -17,7 +17,7 @@ async getAllThoughts(req, res){
 //get thought by id
 async getThoughtById({params}, res){
     try{
-        let thought = await Thought.findOne({_id: params.thoughtId}).populate({path: 'reaction', select: '-__v'}).select('-__v')
+        let thought = await Thought.findOne({_id: params.thoughtId}).populate({path: 'reactions', select: '-__v'}).select('-__v')
         if(!thought) {
             res.status(404).json({message: ' theres no thought with this id'});
             return;
@@ -95,7 +95,7 @@ async addReaction({ params, body}, res) {
     }
 
 },
-async removeReaction({ params, body}, res) {
+async removeReaction({ params}, res) {
     try{
         let reaction = await Thought.findByOneAndUpdate({ _id: params.thoughtId}, {$pull: {reactions: {reactionId: params.reactionId }}}, {new: true})
         res.json(reaction)
