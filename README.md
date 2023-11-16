@@ -1,12 +1,15 @@
 # NoSql-Social-Network API
 
 ## Description
+The backend of this social media site is powered by MongoDB, serving as a NoSQL database for storing user accounts,
+friend connections, thought creation and deletion, and reactions to thought posts.
 
 ## Technologies and Languages Used
 - Node.js
 - Express.js
 - MongoDB
 - Mongoose
+
 ## Installation
 Follow the steps below to install this application:
 - Download NodeJs and make sure you have access to MongoDB
@@ -17,9 +20,9 @@ Follow the steps below to install this application:
 - Call the application using `npm start` to launch the server
 
 ## Usage
-
-
-
+This application functions as a RESTful API, providing the ability to perform 
+CRUD operations (Create, Read, Update, Delete) for a social media/blog site.
 ## license
 Project is licensed under the MIT License
-## Contributions
+
+## Link
