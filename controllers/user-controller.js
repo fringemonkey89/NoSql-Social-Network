@@ -103,7 +103,12 @@ async addFriend({params}, res){
 // delete friend
 async deleteFriend({params}, res){
     try{
-
+        let friend = await User.findOneAndUpdate({_id: params.id}, {$pull: {friends: params.friendId}}, {new: true })
+        if (!friend){
+            res.status(404).json({ message: 'no user with this Id'});
+            return;
+        }
+        res.json(friend)
     }
     catch (err){
         console.log(err);
