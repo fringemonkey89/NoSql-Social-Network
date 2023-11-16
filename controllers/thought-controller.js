@@ -48,7 +48,7 @@ async createThought({params, body}, res){
 },
 
 //update thoughts
-async updateThought({params}, res){
+async updateThought({params, body}, res){
     try{
         let thought = await Thought.findOneAndUpdate({_id: params.thoughtId}, body, {new: true, runValidators:true })
         if(!thought) {
