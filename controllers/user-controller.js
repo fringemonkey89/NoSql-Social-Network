@@ -18,7 +18,7 @@ async getUserById({params}, res){
     try{
         let user = await User.findOne({_id: params.id}).populate({path: 'thoughts', select: '-__v'}).select('-__v')
         if(!user) {
-            res.status(404).jon({message: 'no user with this id'})
+            res.status(404).json({message: 'no user with this id'})
             return;
         }
         res.json(user)
@@ -64,7 +64,7 @@ async updateUser({params, body}, res){
 //delete user
 async deleteUser({params}, res){
     try{
-        let user = await User.findOneAndDelete({_id: params.id})
+        let user = await User.findOneAndelete({_id: params.id})
         if(!user) {
             res.status(404).json({ message: 'no user with this id!'})
             return;
@@ -95,7 +95,7 @@ async addFriend({params}, res){
     }
     catch (err){
         console.log(err);
-        res.status(400).json(err)
+        res.json(err)
     }
 
 },
@@ -104,15 +104,11 @@ async addFriend({params}, res){
 async deleteFriend({params}, res){
     try{
         let friend = await User.findOneAndUpdate({_id: params.id}, {$pull: {friends: params.friendId}}, {new: true })
-        if (!friend){
-            res.status(404).json({ message: 'no user with this Id'});
-            return;
-        }
         res.json(friend)
     }
     catch (err){
         console.log(err);
-        res.status(400).json(err)
+        res.json(err)
     }
 
 },
