@@ -22,6 +22,10 @@ Follow the steps below to install this application:
 ## Usage
 This application functions as a RESTful API, providing the ability to perform 
 CRUD operations (Create, Read, Update, Delete) for a social media/blog site.
+
+- here is the link to the video
+https://drive.google.com/file/d/167VhiSccSrvaZNBOc5Wu9AYpXiN0JQ7O/view
+
 ## license
 Project is licensed under the MIT License
 
