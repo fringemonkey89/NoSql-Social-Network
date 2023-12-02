@@ -88,16 +88,19 @@ async addReaction({ params, body}, res) {
         let reaction = await Thought.findOneAndUpdate({ _id: params.thoughtId}, {$push: {reactions: body }}, {new: true, runValidators: true})
         if (!reaction) {
             res.status(404).json({ message: 'No thought with this id!'})
+            return;
         }
+        res.json(reaction)
     }
     catch (err) {
-
+    console.log(err)
+    res.json(err)
     }
 
 },
 async removeReaction({ params}, res) {
     try{
-        let reaction = await Thought.findByOneAndUpdate({ _id: params.thoughtId}, {$pull: {reactions: {reactionId: params.reactionId }}}, {new: true})
+        let reaction = await Thought.findOneAndUpdate({ _id: params.thoughtId}, {$pull: {reactions: {reactionId: params.reactionId }}}, {new: true})
         res.json(reaction)
     }
     catch (err) {
