@@ -19,6 +19,9 @@ Follow the steps below to install this application:
 - Install the required packages using `npm i`
 - Call the application using `npm start` to launch the server
 
+## Screenshot
+<img src='postmanshot.png'>
+
 ## Usage
 This application functions as a RESTful API, providing the ability to perform 
 CRUD operations (Create, Read, Update, Delete) for a social media/blog site.
